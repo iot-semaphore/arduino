@@ -30,14 +30,17 @@ void setColor(int redPin, int redValue, int greenPin, int greenValue, int bluePi
 // Set color into RGB LEDs
 void setYellowCollor(int redPin, int greenPin, int bluePin) {
   setColor(redPin, 255, greenPin, 255, bluePin, 0);
+void setRunningColor(int redPin, int greenPin, int bluePin) {
+  setColor(redPin, 255, greenPin, 160, bluePin, 0);
 }
 
-void setRedCollor(int redPin, int greenPin, int bluePin) {
+void setFailureColor(int redPin, int greenPin, int bluePin) {
   setColor(redPin, 255, greenPin, 0, bluePin, 0);
 }
 
-void setGreenCollor(int redPin, int greenPin, int bluePin) {
-  setColor(redPin, 0, greenPin, 255, bluePin, 0);
+void setSuccessColor(int redPin, int greenPin, int bluePin) {
+  setColor(redPin, 0, greenPin, 0, bluePin, 255);
+}
 }
 
 // Setup LEDs
