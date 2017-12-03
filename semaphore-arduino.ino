@@ -1,15 +1,25 @@
-int firstRedPin   = A1;
-int firstGreenPin = A2;
-int firstBluePin  = A3;
 
-int secondRedPin   = A4;
-int secondGreenPin = A5;
-int secondBluePin  = A6;
+// Pin settings
+int firstRedPin = 0;
+int firstGreenPin = 1;
+int firstBluePin = 2;
 
-enum STATUS {
-  RUNNING,
-  FAILURE,
-  SUCCESS
+int secondRedPin = 3;
+int secondGreenPin = 4;
+int secondBluePin = 5;
+
+int buzzerPin = A6;
+
+enum status {
+  running,
+  failure,
+  success
+};
+
+enum components {
+  firstLed,
+  secondLed,
+  buzzer
 };
 
 // Life cycle
