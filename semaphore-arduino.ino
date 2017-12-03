@@ -53,9 +53,40 @@ void setFailureColor(int redPin, int greenPin, int bluePin) {
 void setSuccessColor(int redPin, int greenPin, int bluePin) {
   setColor(redPin, 0, greenPin, 0, bluePin, 255);
 }
+
+void setStatus(components pin, status status) {
+  int redPin;
+  int greenPin;
+  int bluePin;
+
+  if (pin == firstLed) {
+    redPin = firstRedPin;
+    greenPin = firstGreenPin;
+    bluePin = firstBluePin;
+  }
+  else if (pin == secondLed) {
+    redPin = secondRedPin;
+    greenPin = secondGreenPin;
+    bluePin = secondBluePin;
+  }
+
+  if (status == running) {
+    setRunningColor(redPin, greenPin, bluePin);
+  }
+  else if (status == success) {
+    setSuccessColor(redPin, greenPin, bluePin);
+  }
+  else if (status == failure) {
+    setFailureColor(redPin, greenPin, bluePin);
+  }
 }
 
-// Setup LEDs
+
+// Setup components
+void setupBuzzer() {
+  pinMode(buzzerPin, OUTPUT);
+}
+
 void setupFirstLed() {
   pinMode(firstRedPin, OUTPUT);
   pinMode(firstGreenPin, OUTPUT);
