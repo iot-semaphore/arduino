@@ -18,7 +18,7 @@ enum status {
 
 enum components {
   firstLed,
-  secondLed,
+  secondGroup,
   buzzer
 };
 
@@ -74,7 +74,7 @@ void setStatus(components pin, status status) {
     greenPin = firstGreenPin;
     bluePin = firstBluePin;
   }
-  else if (pin == secondLed) {
+  else if (pin == secondGroup) {
     redPin = secondRedPin;
     greenPin = secondGreenPin;
     bluePin = secondBluePin;
