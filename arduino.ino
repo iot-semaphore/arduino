@@ -1,14 +1,17 @@
 
 // Pin settings
-int firstRedPin = 0;
-int firstGreenPin = 1;
-int firstBluePin = 2;
+int firstRedPin = 3;
+int firstGreenPin = 4;
+int firstBluePin = 5;
 
-int secondRedPin = 3;
-int secondGreenPin = 4;
-int secondBluePin = 5;
+int secondRedPin = 10;
+int secondGreenPin = 9;
+int secondYellowPin = 8;
 
-int buzzerPin = A6;
+int buzzerPin = 6;
+int buttonPin = 7;
+
+bool beeping = false;
 
 enum status {
   running,
@@ -24,28 +27,34 @@ enum components {
 
 // Life cycle
 void setup() {
+  setupButton();
   setupBuzzer();
   setupFirstLed();
   setupSecondLed();
 }
 
 void loop() {
+//  beeping = true;
 //  tone(buzzerPin, 1000);
 //  delay(300);
 //  noTone(buzzerPin);
 //  delay(3000);
-  
+
+
   setStatus(firstLed, running);
-  delay(2000);
+  setStatus(secondGroup, running);
+  delay(500);
   
   setStatus(firstLed, success);
-  delay(2000);
+  setStatus(secondGroup, success);
+  delay(500);
 
   setStatus(firstLed, failure);
-  delay(2000);
+  setStatus(secondGroup, failure);
+  delay(500);
 }
 
-// Set colors
+// RGB LED set colors
 void setColor(int redPin, int redValue, int greenPin, int greenValue, int bluePin, int blueValue) {
   analogWrite(redPin, redValue);
   analogWrite(greenPin, greenValue);
@@ -61,7 +70,7 @@ void setFailureColor(int redPin, int greenPin, int bluePin) {
 }
 
 void setSuccessColor(int redPin, int greenPin, int bluePin) {
-  setColor(redPin, 0, greenPin, 0, bluePin, 255);
+  setColor(redPin, 0, greenPin, 255, bluePin, 0);
 }
 
 void setStatus(components pin, status status) {
@@ -73,11 +82,6 @@ void setStatus(components pin, status status) {
     redPin = firstRedPin;
     greenPin = firstGreenPin;
     bluePin = firstBluePin;
-  }
-  else if (pin == secondGroup) {
-    redPin = secondRedPin;
-    greenPin = secondGreenPin;
-    bluePin = secondBluePin;
   }
 
   if (status == running) {
@@ -93,6 +97,10 @@ void setStatus(components pin, status status) {
 
 
 // Setup components
+void setupButton() {
+  pinMode(buttonPin, INPUT);
+}
+
 void setupBuzzer() {
   pinMode(buzzerPin, OUTPUT);
 }
@@ -106,5 +114,5 @@ void setupFirstLed() {
 void setupSecondLed() {
   pinMode(secondRedPin, OUTPUT);
   pinMode(secondGreenPin, OUTPUT);
-  pinMode(secondBluePin, OUTPUT);
+  pinMode(secondYellowPin, OUTPUT);
 }
