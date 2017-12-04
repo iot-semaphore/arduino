@@ -74,6 +74,32 @@ void setSuccessColor(int redPin, int greenPin, int bluePin) {
 }
 
 void setStatus(components pin, status status) {
+  // as we are using one RGB Led and three colored Leds, 
+  // we need to do this early return
+  if (pin == secondGroup) {
+    if (status == running) {
+      digitalWrite(secondRedPin, LOW);
+      digitalWrite(secondGreenPin, LOW);
+      digitalWrite(secondYellowPin, HIGH);
+    }
+    else if (status == success) {
+      digitalWrite(secondRedPin, LOW);
+      digitalWrite(secondGreenPin, HIGH);
+      digitalWrite(secondYellowPin, LOW);
+    }
+    else if (status == failure) {
+      digitalWrite(secondRedPin, HIGH);
+      digitalWrite(secondGreenPin, LOW);
+      digitalWrite(secondYellowPin, LOW);
+    }
+
+    return;
+  }
+
+
+  // Continue only if the component selected is the first, but
+  // we still enable to add more RGB LEDs and set else statement
+  
   int redPin;
   int greenPin;
   int bluePin;
