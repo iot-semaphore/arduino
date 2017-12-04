@@ -1,29 +1,13 @@
+// Internal headers
+#include "PinningComponents.h"
+#include "Enums.h"
 
-// Pin settings
-int firstRedPin = 3;
-int firstGreenPin = 4;
-int firstBluePin = 5;
-
-int secondRedPin = 10;
-int secondGreenPin = 9;
-int secondYellowPin = 8;
-
-int buzzerPin = 6;
-int buttonPin = 7;
 
 bool beeping = false;
 
-enum status {
-  running,
-  failure,
-  success
-};
 
-enum components {
-  firstLed,
-  secondGroup,
-  buzzer
-};
+
+
 
 // Life cycle
 void setup() {
